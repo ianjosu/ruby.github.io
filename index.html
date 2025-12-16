@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Creativo de la Carrera - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            min-height: 100vh;
+            position: relative;
+            cursor: default;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle 10vmax at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08) 0%, transparent 80%);
+            opacity: 0.8;
+            transition: background 0.1s linear;
+            z-index: 999;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            z-index: 1000;
+            background: rgba(27, 38, 59, 0.9);
+            backdrop-filter: blur(5px);
+            box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #ff007f;
+            text-decoration: none;
+            position: relative;
+            transform: skew(-10deg);
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.1em;
+            position: relative;
+            transition: color 0.3s ease-out;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #00ffff;
+            transition: width 0.3s ease-out, left 0.3s ease-out;
+        }
+
+        .nav-menu a:hover {
+            color: #00ffff;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5em, 6vw, 5em);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            animation: textReveal 1.5s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: clamp(1em, 2vw, 1.5em);
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+            max-width: 80%;
+        }
+
+        @keyframes textReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .portfolio-section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            animation: textReveal 1s ease-out forwards;
+        }
+
+        .portfolio-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ff007f;
+            animation: expandLine 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- ESTILOS DE LA TARJETA MODIFICADOS (SIN IMAGEN) --- */
+        .work-card {
+            background-color: rgba(30, 30, 50, 0.6); /* Un poco más transparente */
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out, background-color 0.3s;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(0, 255, 255, 0.1); /* Borde sutil por defecto */
+            
+            /* Ajustes de tamaño y alineación */
+            min-height: 220px; /* Reducido de 380px para que se vea compacto */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centra el contenido verticalmente */
+            align-items: center;
+            padding: 20px;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 127, 0.3);
+            border-color: #ff007f;
+            background-color: rgba(30, 30, 50, 0.85); /* Se oscurece un poco al pasar el mouse */
+        }
+
+        .work-info {
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .work-info h3 {
+            font-size: 1.6em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #ff007f;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        .work-info p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #d1d5db;
+            margin-bottom: 0;
+        }
+
+        .work-info .category {
+            font-size: 0.8em;
+            color: #00ffff; /* Cian neón */
+            border: 1px solid #00ffff;
+            background-color: rgba(0, 255, 255, 0.05);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        /* ----------------------------------------------------- */
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #1a1a2e;
+            font-size: 0.9em;
+            color: rgba(224, 224, 224, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 992px) {
+            .works-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+                position: static;
+                background: #1b263b;
+            }
+
+            .logo {
+                font-size: 1.8em;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .portfolio-section {
+                padding: 60px 0;
+            }
+
+            .portfolio-section h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">Eon Flux</a>
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Trabajos 5° Semestre</h1>
+        <p>Un vistazo a los trabajos de nuestra carrera.</p>
+    </section>
+
+    <section id="proyectos" class="portfolio-section">
+        <div class="container">
+            <h2>Nuestros Trabajos</h2>
+            <div class="works-grid">
+
+                <article class="work-card" data-redirect-url="carta.html">
+                    <div class="work-info">
+                        <span class="category">HTML</span>
+                        <h3>Carta</h3>
+                        <p>Documento estructurado que simula una carta formal, aplicando formato semántico.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="php.html">
+                    <div class="work-info">
+                        <span class="category">Backend</span>
+                        <h3>PHP</h3>
+                        <p>Introducción a PHP con manejo de variables y generación dinámica.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="css.html">
+                    <div class="work-info">
+                        <span class="category">Estilos</span>
+                        <h3>CSS</h3>
+                        <p>Uso de hojas de estilo para diseño visual, colores y tipografías.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="html.html">
+                    <div class="work-info">
+                        <span class="category">Estructura</span>
+                        <h3>HTML</h3>
+                        <p>Estructura básica de una página web utilizando etiquetas semánticas.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="javascript.html">
+                    <div class="work-info">
+                        <span class="category">Interacción</span>
+                        <h3>JavaScript</h3>
+                        <p>Programación básica para agregar interactividad y lógica.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="examen.html">
+                    <div class="work-info">
+                        <span class="category">Evaluación</span>
+                        <h3>Examen</h3>
+                        <p>Evaluación práctica que integra conocimientos de HTML, CSS y JS.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="listas.html">
+                    <div class="work-info">
+                        <span class="category">HTML</span>
+                        <h3>Tipos de Listas</h3>
+                        <p>Uso de listas ordenadas, desordenadas y descriptivas.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="horario.html">
+                    <div class="work-info">
+                        <span class="category">Tablas</span>
+                        <h3>Horario</h3>
+                        <p>Creación de un horario escolar usando tablas complejas.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="alumnos.html">
+                    <div class="work-info">
+                        <span class="category">Datos</span>
+                        <h3>Lista de Alumnos</h3>
+                        <p>Listado estructurado de alumnos aplicando tablas y estilos.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="form-alerta.html">
+                    <div class="work-info">
+                        <span class="category">PHP</span>
+                        <h3>Formularios</h3>
+                        <p>Envío y recepción de datos usando métodos GET y POST.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="tabla-periodica.html">
+                    <div class="work-info">
+                        <span class="category">Tablas</span>
+                        <h3>Tabla Periódica</h3>
+                        <p>Representación visual de elementos químicos con HTML y CSS.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="eventos.html">
+                    <div class="work-info">
+                        <span class="category">JavaScript</span>
+                        <h3>Eventos</h3>
+                        <p>Uso de eventos de mouse y botones para ejecutar acciones.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="lenguajes.html">
+                    <div class="work-info">
+                        <span class="category">Info</span>
+                        <h3>Lenguajes</h3>
+                        <p>Comparación de lenguajes de programación mediante tablas.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="evaluacion.html">
+                    <div class="work-info">
+                        <span class="category">Evaluación</span>
+                        <h3>Criterios</h3>
+                        <p>Tabla interactiva para calificaciones y criterios de evaluación.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="lavandas.html">
+                    <div class="work-info">
+                        <span class="category">Proyecto</span>
+                        <h3>Lavandas</h3>
+                        <p>Proyecto informativo sobre la planta lavanda y sus usos.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="adicciones.html">
+                    <div class="work-info">
+                        <span class="category">Salud</span>
+                        <h3>Adicciones</h3>
+                        <p>Página de investigación sobre causas y prevención.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="media-queries.html">
+                    <div class="work-info">
+                        <span class="category">CSS</span>
+                        <h3>Media Queries</h3>
+                        <p>Uso de reglas CSS para adaptar el diseño a dispositivos.</p>
+                    </div>
+                </article>
+
+                <article class="work-card" data-redirect-url="ejemplo-media.html">
+                    <div class="work-info">
+                        <span class="category">Responsive</span>
+                        <h3>Ejemplo @media</h3>
+                        <p>Ejemplo práctico completo de diseño responsivo.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Eon Flux. Portafolio de la Carrera. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    document.body.addEventListener('mousemove', (e) => {
+        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+
+    document.querySelectorAll('.work-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const url = card.dataset.redirectUrl;
+            if (url) {
+                document.body.style.opacity = 0;
+                document.body.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 500);
+            }
+        });
+    });
+
+    window.addEventListener('load', () => {
+        document.body.style.opacity = 1;
+    });
+</script>
+
+</body>
+</html>

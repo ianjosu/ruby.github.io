@@ -1,0 +1,177 @@
+body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #1e1b4b 100%);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #ff007f;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .tabla-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            overflow-x: auto;
+            padding: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #ff007f #0f172a;
+        }
+
+        table {
+            border-spacing: 4px; 
+            border-collapse: separate; 
+            margin: 0 auto;
+        }
+
+        td {
+            border-radius: 8px; 
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 60px;  
+            height: 70px; 
+            vertical-align: middle;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        td:not(.Nada):hover {
+            transform: scale(1.15);
+            z-index: 10;
+            box-shadow: 0 0 15px currentColor;
+            cursor: pointer;
+        }
+
+        .Numerito {
+            position: absolute;
+            top: 2px;
+            left: 4px;
+            font-size: 10px;
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        .Letra {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            margin-top: 5px;
+        }
+
+        .Nombre {
+            font-size: 9px;
+            margin-top: 2px;
+            opacity: 0.9;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        
+        .Moradito {
+            background: rgba(171, 145, 255, 0.15);
+            border: 1px solid #ab91ff;
+            color: #ab91ff;
+        }
+        .Moradito:hover { background: #ab91ff; color: #000; }
+
+        .Azulito {
+            background: rgba(145, 223, 255, 0.15);
+            border: 1px solid #91dfff;
+            color: #91dfff;
+        }
+        .Azulito:hover { background: #91dfff; color: #000; }
+
+        .Naranjito {
+            background: rgba(255, 197, 145, 0.15);
+            border: 1px solid #ffc591;
+            color: #ffc591;
+        }
+        .Naranjito:hover { background: #ffc591; color: #000; }
+
+        .Naranja_suave {
+            background: rgba(255, 223, 145, 0.15);
+            border: 1px solid #ffdf91;
+            color: #ffdf91;
+        }
+        .Naranja_suave:hover { background: #ffdf91; color: #000; }
+
+        .Verdecito {
+            background: rgba(146, 255, 159, 0.15);
+            border: 1px solid #92ff9f;
+            color: #92ff9f;
+        }
+        .Verdecito:hover { background: #92ff9f; color: #000; }
+
+        .Rosita {
+            background: rgba(249, 145, 255, 0.15);
+            border: 1px solid #f991ff;
+            color: #f991ff;
+        }
+        .Rosita:hover { background: #f991ff; color: #000; }
+
+        .Amarillito {
+            background: rgba(255, 249, 145, 0.15);
+            border: 1px solid #fff991;
+            color: #fff991;
+        }
+        .Amarillito:hover { background: #fff991; color: #000; }
+
+        .Amaverde {
+            background: rgba(236, 255, 145, 0.15);
+            border: 1px solid #ecff91;
+            color: #ecff91;
+        }
+        .Amaverde:hover { background: #ecff91; color: #000; }
+
+        .Gris {
+            background: rgba(200, 200, 200, 0.15);
+            border: 1px solid #c8c8c8;
+            color: #c8c8c8;
+        }
+        .Gris:hover { background: #c8c8c8; color: #000; }
+        
+        .TierrasRaras {
+            background: rgba(0, 255, 255, 0.15);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+        }
+        .TierrasRaras:hover { background: #00ffff; color: #000; }
+
+        .Nada {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .btn-back {
+            margin-top: 30px;
+            padding: 10px 25px;
+            background: transparent;
+            color: #ff007f;
+            text-decoration: none;
+            border: 2px solid #ff007f;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-back:hover {
+            background: #ff007f;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+        }

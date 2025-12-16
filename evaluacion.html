@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criterios de Evaluación - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #ff007f; 
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: rgba(0, 255, 255, 0.15);
+            color: #00ffff;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            border-bottom: 2px solid #ff007f;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        label {
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        label:hover {
+            color: #00ffff;
+        }
+
+        input[type="radio"] {
+            accent-color: #ff007f; 
+            transform: scale(1.2);
+        }
+
+        .btn-calc {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-calc:hover {
+            background: #00ffff;
+            color: #1b263b;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .resultado-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: center;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            display: none; 
+            animation: fadeIn 0.5s ease;
+        }
+
+        #score-number {
+            font-size: 3em;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            display: block;
+            margin: 10px 0;
+        }
+
+        #score-text {
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: transparent;
+            color: #ff007f;
+            border: 1px solid #ff007f;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #ff007f;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        
+        <a href="index.html" class="back-button">← Regresar al Inicio</a>
+
+        <h2>Evaluación de Proyecto</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Criterio</th>
+                    <th style="width: 80px;">Pts</th>
+                    <th>Cumplimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Diseño Visual (CSS)</td>
+                    <td>2</td>
+                    <td>
+                        <div class="radio-group">
+                            <label><input type="radio" name="diseno" value="si"> Sí</label>
+                            <label><input type="radio" name="diseno" value="no"> No</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tipografía y Fuentes</td>
+                    <td>2</td>
+                    <td>
+                        <div class="radio-group">
+                            <label><input type="radio" name="texto" value="si"> Sí</label>
+                            <label><input type="radio" name="texto" value="no"> No</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Estructura de Tablas</td>
+                    <td>2</td>
+                    <td>
+                        <div class="radio-group">
+                            <label><input type="radio" name="tabla" value="si"> Sí</label>
+                            <label><input type="radio" name="tabla" value="no"> No</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enlaces y Navegación</td>
+                    <td>2</td>
+                    <td>
+                        <div class="radio-group">
+                            <label><input type="radio" name="enlaces" value="si"> Sí</label>
+                            <label><input type="radio" name="enlaces" value="no"> No</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Uso de Imágenes</td>
+                    <td>2</td>
+                    <td>
+                        <div class="radio-group">
+                            <label><input type="radio" name="imagenes" value="si"> Sí</label>
+                            <label><input type="radio" name="imagenes" value="no"> No</label>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn-calc" onclick="calcularPuntaje()">Calcular Calificación</button>
+
+        <div id="resultado" class="resultado-box">
+            <span>CALIFICACIÓN FINAL:</span>
+            <span id="score-number">0/10</span>
+            <span id="score-text">---</span>
+        </div>
+
+    </div>
+
+    <script>
+        function calcularPuntaje(){
+            const criterios = ["diseno", "texto", "tabla", "enlaces", "imagenes"];
+            let total = 0;
+
+            criterios.forEach(c => {
+                const cumple = document.querySelector(`input[name="${c}"]:checked`);
+                if(cumple && cumple.value === "si"){
+                    total += 2;
+                }
+            });
+
+            const resultBox = document.getElementById("resultado");
+            const scoreNum = document.getElementById("score-number");
+            const scoreText = document.getElementById("score-text");
+
+            resultBox.style.display = "block";
+            scoreNum.innerText = total + "/10";
+
+            if(total === 10) {
+                scoreNum.style.color = "#00ffff"; 
+                scoreText.innerText = "¡EXCELENTE TRABAJO!";
+                scoreText.style.color = "#00ffff";
+            } else if (total >= 6) {
+                scoreNum.style.color = "#facc15";
+                scoreText.innerText = "APROBADO (PUEDE MEJORAR)";
+                scoreText.style.color = "#facc15";
+            } else {
+                scoreNum.style.color = "#ff007f"; 
+                scoreText.innerText = "REPROBADO - REVISAR PROYECTO";
+                scoreText.style.color = "#ff007f";
+            }
+        }
+    </script>
+
+</body>
+</html>

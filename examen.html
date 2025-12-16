@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Ruby - Eon Flux Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .glass-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(30, 30, 50, 0.75); 
+            backdrop-filter: blur(10px); 
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff007f;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+
+        h2, h3 {
+            color: #00ffff;
+            margin-top: 30px;
+        }
+
+        img.profile-pic {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%; 
+            border: 3px solid #ff007f;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        img.profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        ul {
+            display: inline-block;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 40px;
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+            list-style: none; 
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        ul li strong {
+            color: #ff007f;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            border: 1px solid #00ffff;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        th {
+            background-color: rgba(255, 0, 127, 0.2); 
+            color: #ff007f;
+            padding: 12px;
+            border-bottom: 2px solid #00ffff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: #e0e0e0;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00ffff;
+            font-size: 0.9em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: #fff;
+            box-sizing: border-box; 
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff007f;
+            background-color: rgba(255, 0, 127, 0.05);
+        }
+
+        input[type="submit"], .btn-inicio {
+            background-color: transparent;
+            color: #ff007f;
+            padding: 10px 25px;
+            border: 2px solid #ff007f;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        input[type="submit"]:hover, .btn-inicio:hover {
+            background-color: #ff007f;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+        }
+
+        .btn-inicio {
+            margin-top: 30px;
+            border-color: #00ffff;
+            color: #00ffff;
+        }
+
+        .btn-inicio:hover {
+            background-color: #00ffff;
+            border-color: #00ffff;
+            color: #1b263b; 
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <div class="glass-container">
+        
+        <h1>Mi Perfil</h1>
+
+        <img src="OIP.webp" alt="Foto de Ruby" class="profile-pic">
+
+        <h2>Información Personal</h2>
+        <ul>
+            <li><strong>Nombre:</strong> Ruby</li>
+            <li><strong>Carrera:</strong> Ingeniería en Gestión Empresarial</li>
+            <li><strong>Edad:</strong> 18</li>
+            <li><strong>Especialidad:</strong> Programación</li>
+            <li><strong>Interés:</strong> Leer</li>
+        </ul>
+
+        <h3>Formación Académica</h3>
+        <table>
+            <tr>
+                <th>Año</th>
+                <th>Institución</th>
+                <th>Título</th>
+            </tr>
+            <tr>
+                <td>2026</td>
+                <td>CBTis No. 83</td>
+                <td>Técnica en Programación</td>
+            </tr>
+        </table>
+
+        <form action="" method="post" onsubmit="return mostrarDatos()">
+            <fieldset>
+                <label>Nombre</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre...">
+
+                <label>Email</label>
+                <input type="text" name="email" id="email" placeholder="ejemplo@correo.com">
+
+                <label>Mensaje</label>
+                <input type="text" name="mensaje" id="mensaje" placeholder="Escribe aquí...">
+
+                <input type="submit" value="ENVIAR DATOS">
+            </fieldset>
+        </form>
+
+        <a href="index.html" class="btn-inicio">VOLVER AL INICIO</a>
+    
+    </div>
+
+    <script>
+        function mostrarDatos() {
+            let nombre  = document.getElementById("nombre").value;
+            let email   = document.getElementById("email").value;
+            let mensaje = document.getElementById("mensaje").value;
+
+            alert(" Nuevo Mensaje de Ruby ✨\n\n" +
+                  " Nombre: " + nombre + "\n" +
+                  " Email: " + email + "\n" +
+                  " Mensaje: " + mensaje);
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

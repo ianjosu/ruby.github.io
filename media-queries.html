@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --accent-cyan: #00ffff;
+            --accent-magenta: #ff007f;
+            --text-main: #e0e0e0;
+            --glass: rgba(30, 30, 50, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 1100px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-cyan);
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-magenta);
+            font-size: 2em;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 0, 127, 0.3);
+            display: inline-block;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #c0c0c0;
+            line-height: 1.6;
+        }
+
+        .grid-concepts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #a0a0a0;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255, 0, 127, 0.2);
+            color: var(--accent-magenta);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .code-window {
+            background: #0b1220;
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .code-header {
+            background: #1e293b;
+            padding: 8px 15px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid #333;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            color: #a5f3fc;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .comment { color: #64748b; font-style: italic; }
+        .prop { color: #f9a8d4; }
+        .val { color: #fde047; }
+        .selector { color: #60a5fa; }
+
+        .demo-box {
+            width: 93%;
+            padding: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            border: 2px dashed rgba(255,255,255,0.2);
+        }
+
+        .demo-box {
+            background-color: #ef4444;
+            color: white;
+        }
+        .demo-text::after { content: "Vista Móvil (< 600px)"; }
+
+        @media (min-width: 600px) {
+            .demo-box { background-color: #eab308; color: black; } 
+            .demo-text::after { content: "Vista Tablet (600px - 1024px)"; }
+        }
+
+        @media (min-width: 1024px) {
+            .demo-box { background-color: #22c55e; color: white; }
+            .demo-text::after { content: "Vista Escritorio (> 1024px)"; }
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-magenta), var(--accent-cyan));
+            color: #1b263b;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .back-button:hover { transform: scale(1.05); }
+
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        
+        <a href="index.html" class="back-button">← Regresar al Inicio</a>
+
+        <h1>Media Queries</h1>
+        <p class="intro-text">
+            Las <strong>Media Queries</strong> son el corazón del diseño web responsivo (Responsive Design). 
+            Permiten que una página web cambie su apariencia y estructura dinámicamente según el tamaño de la pantalla, la orientación o la resolución del dispositivo.
+        </p>
+
+        <h2>1. Conceptos Fundamentales</h2>
+        <div class="grid-concepts">
+            
+            <div class="card">
+                <span class="tag">@media</span>
+                <h3>La Regla @media</h3>
+                <p>Es la instrucción CSS que le dice al navegador: "Si se cumple esta condición (por ejemplo, la pantalla mide menos de 600px), aplica estos estilos nuevos".</p>
+            </div>
+
+            <div class="card">
+                <span class="tag">min-width</span>
+                <h3>Min-Width (Desde...)</h3>
+                <p>Define estilos que se aplicarán <strong>a partir</strong> de cierto tamaño. Es la base del enfoque "Mobile First" (Diseñar primero para móvil y luego expandir).</p>
+            </div>
+
+            <div class="card">
+                <span class="tag">max-width</span>
+                <h3>Max-Width (Hasta...)</h3>
+                <p>Define estilos que se aplicarán <strong>hasta</strong> cierto tamaño máximo. Útil para hacer ajustes específicos en pantallas pequeñas (Desktop First).</p>
+            </div>
+
+            <div class="card">
+                <span class="tag">breakpoints</span>
+                <h3>Breakpoints</h3>
+                <p>Son los "puntos de quiebre" o medidas estándar donde el diseño cambia. Comúnmente: 576px (móvil), 768px (tablet), 1024px (desktop).</p>
+            </div>
+
+        </div>
+
+        <h2>2. Estructura de Código</h2>
+        <p>Así es como se ve una Media Query típica en CSS:</p>
+
+        <div class="code-window">
+            <div class="code-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <pre>
+<span class="comment">/* Estilos Generales (Móvil por defecto) */</span>
+<span class="selector">body</span> {
+    <span class="prop">background-color</span>: <span class="val">lightblue</span>;
+    <span class="prop">font-size</span>: <span class="val">14px</span>;
+}
+
+<span class="comment">/* Para Tablets (mínimo 768px) */</span>
+<span class="selector">@media</span> (min-width: 768px) {
+    <span class="selector">body</span> {
+        <span class="prop">background-color</span>: <span class="val">lightgreen</span>;
+        <span class="prop">font-size</span>: <span class="val">16px</span>;
+    }
+}
+
+<span class="comment">/* Para Escritorio (mínimo 1024px) */</span>
+<span class="selector">@media</span> (min-width: 1024px) {
+    <span class="selector">body</span> {
+        <span class="prop">background-color</span>: <span class="val">salmon</span>;
+        <span class="prop">font-size</span>: <span class="val">18px</span>;
+    }
+}</pre>
+        </div>
+
+        <h2>3. Demostración en Vivo</h2>
+        <p>Redimensiona la ventana de tu navegador para ver cómo cambia la caja de abajo. ¡Usa Media Queries reales!</p>
+
+        <div class="demo-box">
+            <span class="demo-text"></span>
+        </div>
+
+       
+    </div>
+
+</body>
+</html>

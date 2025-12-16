@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Maestra de CSS - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            color: #ff007f; 
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #00ffff;
+            font-size: 1.8em;
+            margin-top: 50px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            color: #ff007f;
+            font-size: 1.3em;
+            margin-top: 30px;
+        }
+
+        p, li {
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        pre {
+            background-color: #0f1a2a;
+            border: 1px solid #00ffff;
+            border-left: 5px solid #ff007f;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #a0ffb0;
+            font-family: 'Consolas', monospace;
+        }
+
+        code {
+            font-family: 'Consolas', monospace;
+            background: rgba(255, 0, 127, 0.15);
+            color: #ff007f;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .demo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed #00ffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .box-model-viz {
+            background-color: #00ffff; 
+            color: #1b263b;
+            font-weight: bold;
+            padding: 20px;
+            border: 5px solid #ff007f; 
+            margin: 20px; 
+            display: inline-block;
+            position: relative;
+        }
+        .box-model-viz::before { content: 'Margin (Ext)'; position: absolute; top: -25px; left: 0; color: #e0e0e0; font-size: 0.8em;}
+        
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1b263b;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .flex-item {
+            background-color: #ff007f;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 4px;
+            width: 30%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .grid-item {
+            background-color: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        th {
+            color: #00ffff;
+            border-bottom: 2px solid #ff007f;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .flex-container { flex-direction: column; }
+            .flex-item { width: 100%; box-sizing: border-box; }
+        }
+        .back-button {
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        <button class="back-button" onclick="window.location.href='index.html'">
+            Regresar al inicio
+        </button>
+        <h1> CSS: El Arte del Estilo</h1>
+        <p class="subtitle">Cascading Style Sheets - La piel de la web</p>
+
+        <p>
+            CSS es el lenguaje utilizado para describir la presentación de un documento HTML. Mientras que HTML es la <strong>estructura</strong> (los huesos), CSS es el <strong>estilo</strong> (la piel, la ropa y el maquillaje).
+        </p>
+
+        <h2>1. Sintaxis Básica</h2>
+        <p>
+            Una regla CSS se compone de un <strong>selector</strong> y un bloque de <strong>declaración</strong>.
+        </p>
+        <pre>
+selector {
+    propiedad: valor;
+    color: #ff007f;
+}</pre>
+
+        <h3>Tipos de Selectores</h3>
+        <table>
+            <tr>
+                <th>Selector</th>
+                <th>Ejemplo</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>Etiqueta</td>
+                <td><code>p { }</code></td>
+                <td>Afecta a todos los párrafos.</td>
+            </tr>
+            <tr>
+                <td>Clase</td>
+                <td><code>.boton { }</code></td>
+                <td>Afecta a elementos con <code>class="boton"</code>. (Reutilizable)</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td><code>#header { }</code></td>
+                <td>Afecta a un elemento único con <code>id="header"</code>.</td>
+            </tr>
+            <tr>
+                <td>Universal</td>
+                <td><code>* { }</code></td>
+                <td>Afecta a todos los elementos de la página.</td>
+            </tr>
+        </table>
+
+        <h2>2. El Modelo de Caja (Box Model)</h2>
+        <p>
+            Todo en CSS es una caja rectangular. Entender esto es la clave del diseño. Una caja tiene 4 capas:
+        </p>
+        <ul>
+            <li><strong>Content:</strong> El texto o imagen real.</li>
+            <li><strong>Padding:</strong> Espacio interior (entre el contenido y el borde).</li>
+            <li><strong>Border:</strong> El borde alrededor del padding.</li>
+            <li><strong>Margin:</strong> Espacio exterior (separa esta caja de otras).</li>
+        </ul>
+
+        <div class="demo-box">
+            <p style="margin-bottom: 5px; color: #00ffff;">Demostración Visual:</p>
+            <div class="box-model-viz">
+                Soy el Contenido
+            </div>
+            <p style="font-size: 0.8em; margin-top: 10px;">
+                <span style="color: #ff007f">Magenta = Borde</span> | 
+                <span style="color: #00ffff">Cian = Contenido + Padding</span> |
+                Espacio Invisible = Margen
+            </p>
+        </div>
+
+        <h2>3. Sistemas de Diseño (Layouts)</h2>
+        <p>Antiguamente se usaban "floats", pero hoy dominan dos gigantes:</p>
+
+        <h3>A. Flexbox (Unidimensional)</h3>
+        <p>Perfecto para alinear elementos en una fila o una columna. Esencial para menús y centrado vertical.</p>
+        <pre>
+.contenedor {
+    display: flex;
+    justify-content: space-between; /* Separa los items */
+    align-items: center; /* Centra verticalmente */
+}</pre>
+        
+        <div class="demo-box">
+            <div class="flex-container">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            <p style="font-size: 0.8em; margin-top: 5px;"><code>justify-content: space-between;</code></p>
+        </div>
+
+        <h3>B. CSS Grid (Bidimensional)</h3>
+        <p>El sistema más potente. Permite crear filas y columnas simultáneamente.</p>
+        <pre>
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    gap: 10px; /* Espacio entre celdas */
+}</pre>
+
+        <div class="demo-box">
+            <div class="grid-container">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+            </div>
+        </div>
+
+        <h2>4. Diseño Responsivo</h2>
+        <p>
+            Hacer que la web se vea bien en celulares y computadoras. Se usa la regla <code>@media</code>.
+        </p>
+        <pre>
+/* Estilos base (Móvil primero) */
+body { font-size: 14px; }
+
+/* Para pantallas mayores a 768px (Tablets/PC) */
+@media (min-width: 768px) {
+    body { font-size: 18px; }
+    .menu { display: flex; }
+}</pre>
+
+        <h2>5. Unidades y Colores</h2>
+        
+        <h3>Unidades de Medida</h3>
+        <ul>
+            <li><code>px</code>: Píxeles (Fijo).</li>
+            <li><code>%</code>: Porcentaje del padre.</li>
+            <li><code>rem</code>: Relativo al tamaño de fuente raíz (Recomendado para accesibilidad).</li>
+            <li><code>vh / vw</code>: Porcentaje del tamaño de la pantalla (Viewport).</li>
+        </ul>
+
+        <h3>Colores</h3>
+        <ul>
+            <li><strong>Hexadecimal:</strong> <code>#ff007f</code> (Lo que usamos aquí).</li>
+            <li><strong>RGB:</strong> <code>rgb(255, 0, 127)</code>.</li>
+            <li><strong>RGBA:</strong> <code>rgba(255, 0, 127, 0.5)</code> (Con transparencia).</li>
+        </ul>
+
+       
+
+    </div>
+
+</body>
+</html>

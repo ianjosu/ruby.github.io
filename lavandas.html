@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanda Natural - Eon Flux Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #2e1065 100%);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            color: #d8b4fe;
+            text-align: center;
+            font-size: 3em;
+            margin-top: 40px;
+            text-shadow: 0 0 20px rgba(216, 180, 254, 0.5);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        h2 {
+            color: #c084fc; 
+            border-bottom: 2px solid #c084fc;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        .nav-bar {
+            background: rgba(27, 38, 59, 0.95);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #d8b4fe;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #c084fc;
+            text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 450px; 
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.5em;
+            border-radius: 50%;
+            transition: 0.3s;
+            z-index: 10;
+        }
+        .carousel-btn:hover { background: #c084fc; }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .section-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+            background: rgba(30, 30, 50, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-col { flex: 1; }
+        .img-col { flex: 1; text-align: center; }
+
+        .img-col img {
+            width: 100%;
+            max-width: 500px;
+            height: 300px; 
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
+            border: 2px solid #c084fc;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(192, 132, 252, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(192, 132, 252, 0.3);
+            border-color: #d8b4fe;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+        }
+
+        .card-body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-title {
+            color: #d8b4fe;
+            margin-top: 0;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            max-width: 700px;
+            margin: 0 auto 80px auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #d8b4fe;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: white;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 5px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #c084fc;
+            box-shadow: 0 0 10px rgba(192, 132, 252, 0.4);
+        }
+
+        .btn-submit {
+            margin-top: 25px;
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid #c084fc;
+            color: #c084fc;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: #c084fc;
+            color: #1b263b;
+            box-shadow: 0 0 20px rgba(192, 132, 252, 0.7);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #1a1a2e;
+            color: #888;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .section-row, .section-row.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            .carousel-container { height: 300px; }
+            h1 { font-size: 2em; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="brand">Eon Flux</a>
+        <div class="nav-links">
+            <a href="index.html">← Inicio</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#usos">Usos</a>
+            <a href="#formulario" class="active">Cultiva</a>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+
+        <header>
+            <h1>La Belleza de la Lavanda</h1>
+            <p class="subtitle">Conoce sus beneficios, usos y encanto natural</p>
+        </header>
+
+        <div class="carousel-container">
+            <div class="slide active">
+                <img src="imagen1.jpg" alt="Campo de Lavanda">
+            </div>
+            <div class="slide">
+                <img src="imagen2.jpg" alt="Flores de Lavanda">
+            </div>
+            <div class="slide">
+                <img src="imagen3.jpg" alt="Lavanda Morada">
+            </div>
+
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <section id="sobre" class="section-row">
+            <div class="text-col">
+                <h2>Sobre la Lavanda</h2>
+                <p>
+                    La lavanda es una planta aromática originaria del Mediterráneo, conocida por su fragancia relajante y su hermoso color violeta.
+                    Se utiliza en perfumes, aceites esenciales y tratamientos naturales por sus propiedades calmantes y purificadoras.
+                </p>
+            </div>
+            <div class="img-col">
+                <img src="imagen4.jpg" alt="Aceite esencial">
+            </div>
+        </section>
+
+        <section id="usos">
+            <h2 style="display:block; text-align:center; border:none;">Usos Comunes de la Lavanda</h2>
+            <div class="cards-grid">
+                
+                <div class="card">
+                    <img src="imagen5.jpg" alt="Aromaterapia">
+                    <div class="card-body">
+                        <h3 class="card-title">Aromaterapia</h3>
+                        <p>El aceite de lavanda se usa para aliviar el estrés, mejorar el sueño y promover la calma interior.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="imagen6.jpg" alt="Medicinal">
+                    <div class="card-body">
+                        <h3 class="card-title">Uso Medicinal</h3>
+                        <p>Sus propiedades antibacterianas ayudan a curar heridas leves, irritaciones y picaduras.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="imagen3.jpg" alt="Jardín">
+                    <div class="card-body">
+                        <h3 class="card-title">Decoración</h3>
+                        <p>Ideal para embellecer jardines y arreglos florales gracias a su color y aroma inconfundibles.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-row reverse">
+            <div class="text-col">
+                <h2>Importancia Ecológica</h2>
+                <p>
+                    Las flores de lavanda atraen a abejas, mariposas y otros polinizadores esenciales para el equilibrio del ecosistema.
+                    Además, su cultivo requiere poca agua, convirtiéndola en una planta amigable con el medio ambiente.
+                </p>
+            </div>
+            <div class="img-col">
+                <img src="imagen2.jpg" alt="Ecología">
+            </div>
+        </section>
+
+        <section id="formulario" class="form-section">
+            <h2 style="display:block; text-align:center; border:none; margin-top:0;">Solicitud para Cultivar</h2>
+            
+            <form onsubmit="event.preventDefault(); alert('Enviado con estilo Eon Flux');">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Escribe tu nombre">
+
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" placeholder="ejemplo@correo.com">
+
+                <label for="region">Región o país</label>
+                <input type="text" id="region" placeholder="¿Dónde planeas cultivarla?">
+
+                <label for="experiencia">Experiencia en jardinería</label>
+                <select id="experiencia">
+                    <option value="">Selecciona una opción</option>
+                    <option value="si">Sí, tengo experiencia</option>
+                    <option value="no">No, soy principiante</option>
+                </select>
+
+                <label for="mensaje">Comentario o mensaje</label>
+                <textarea id="mensaje" rows="4" placeholder="Cuéntanos tu interés..."></textarea>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2025 Lavanda Natural |</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function moveSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+    </script>
+
+</body>
+</html>

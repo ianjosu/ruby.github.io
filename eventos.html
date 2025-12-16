@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos de Botones - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 1100px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #ff007f; 
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+            font-weight: 700;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: #c0c0c0;
+            line-height: 1.6;
+        }
+
+        .grid-eventos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ff007f;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #00ffff;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #d1d5db;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .card .usage-info {
+            font-size: 0.8em;
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 15px;
+            border-left: 2px solid #ff007f;
+            padding-left: 10px;
+        }
+
+        .btn-test {
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            transition: 0.2s;
+            margin-bottom: 10px;
+        }
+
+        .btn-test:hover {
+            background: #00ffff;
+            color: #1b263b;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .btn-test:active {
+            transform: scale(0.98);
+        }
+
+        .resultado {
+            background: rgba(0,0,0,0.4);
+            color: #ff007f;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: bold;
+            min-height: 20px;
+            opacity: 0.5;
+            transition: opacity 0.3s, color 0.3s;
+        }
+
+        .resultado.activo {
+            opacity: 1;
+            color: #fff;
+            background: rgba(255, 0, 127, 0.3);
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .guide-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        
+        <a href="index.html" class="back-button">← Regresar al Inicio</a>
+
+        <h1>Eventos del Mouse en JavaScript</h1>
+        <p class="intro-text">
+            Los eventos son acciones que suceden en el navegador. JavaScript puede "escuchar" estos eventos para crear interactividad. Aquí exploramos los más comunes aplicados a botones.
+        </p>
+
+        <div class="grid-eventos">
+
+            <div class="card">
+                <h3>1. onclick</h3>
+                <p>El evento más fundamental. Se dispara cuando el usuario presiona y suelta el botón izquierdo del mouse sobre el elemento.</p>
+                <div class="usage-info">Uso común: Enviar formularios, abrir enlaces, confirmar acciones.</div>
+                
+                <button class="btn-test" onclick="testEvento(this, '¡Clic registrado!')">Haz Clic Aquí</button>
+                <div class="resultado">Esperando...</div>
+            </div>
+
+            <div class="card">
+                <h3>2. ondblclick</h3>
+                <p>Se activa solo cuando el usuario hace dos clics rápidos y sucesivos sobre el mismo elemento.</p>
+                <div class="usage-info">Uso común: Abrir archivos, editar texto, hacer zoom.</div>
+
+                <button class="btn-test" ondblclick="testEvento(this, '¡Doble Clic Exitoso!')">Doble Clic Aquí</button>
+                <div class="resultado">Esperando...</div>
+            </div>
+
+            <div class="card">
+                <h3>3. onmouseover</h3>
+                <p>Se dispara en el momento exacto en que el puntero del mouse entra en el área del botón.</p>
+                <div class="usage-info">Uso común: Mostrar tooltips (ayudas), efectos hover, menús desplegables.</div>
+
+                <button class="btn-test" onmouseover="testEvento(this, '¡Entraste al área!')">Pasa el Mouse</button>
+                <div class="resultado">Esperando...</div>
+            </div>
+
+            <div class="card">
+                <h3>4. onmouseout</h3>
+                <p>Lo opuesto al anterior. Se dispara cuando el puntero del mouse sale del área del botón.</p>
+                <div class="usage-info">Uso común: Ocultar menús, revertir colores, cerrar ayudas.</div>
+
+                <button class="btn-test" onmouseout="testEvento(this, '¡Saliste del área!')">Entra y Sal</button>
+                <div class="resultado">Esperando...</div>
+            </div>
+
+            <div class="card">
+                <h3>5. onmousedown</h3>
+                <p>Se activa inmediatamente cuando se presiona el botón del mouse, antes de soltarlo.</p>
+                <div class="usage-info">Uso común: Juegos (disparar), arrastrar y soltar (drag & drop).</div>
+
+                <button class="btn-test" onmousedown="testEvento(this, '¡Presionando!')">Mantén Presionado</button>
+                <div class="resultado">Esperando...</div>
+            </div>
+
+            <div class="card">
+                <h3>6. onmouseup</h3>
+                <p>Se activa cuando el usuario suelta el botón del mouse después de haberlo presionado.</p>
+                <div class="usage-info">Uso común: Finalizar una acción de arrastre, detener un cronómetro.</div>
+
+                <button class="btn-test" onmouseup="testEvento(this, '¡Soltaste el botón!')">Presiona y Suelta</button>
+                <div class="resultado">Esperando...</div>
+            </div>
+
+        </div>
+
+        
+
+    </div>
+
+    <script>
+        function testEvento(btn, mensaje) {
+            const cajaRes = btn.nextElementSibling;
+            
+            cajaRes.innerText = mensaje;
+            cajaRes.classList.add('activo');
+
+            const colorOriginal = btn.style.borderColor;
+            btn.style.borderColor = '#ff007f';
+            btn.style.color = '#ff007f';
+
+            setTimeout(() => {
+                cajaRes.classList.remove('activo');
+                cajaRes.innerText = "Esperando...";
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

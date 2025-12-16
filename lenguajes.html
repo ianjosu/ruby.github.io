@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compendio de Lenguajes - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #ff007f; 
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #00ffff;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 0, 127, 0.5);
+            display: inline-block;
+            padding-right: 20px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px; 
+        }
+
+        th {
+            background-color: rgba(255, 0, 127, 0.15);
+            color: #ff007f;
+            text-align: left;
+            padding: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            border-bottom: 2px solid #00ffff;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 255, 255, 0.05);
+        }
+
+        .lang-badge {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            border: 1px solid;
+            margin-bottom: 5px;
+            background: rgba(0,0,0,0.3);
+            width: 80px;
+            text-align: center;
+        }
+
+        .ext {
+            display: block;
+            font-size: 0.75em;
+            color: #94a3b8;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        .html { color: #f97316; border-color: #f97316; box-shadow: 0 0 5px rgba(249, 115, 22, 0.3); }
+        .css { color: #0ea5e9; border-color: #0ea5e9; box-shadow: 0 0 5px rgba(14, 165, 233, 0.3); }
+        .js { color: #facc15; border-color: #facc15; box-shadow: 0 0 5px rgba(250, 204, 21, 0.3); }
+        .php { color: #a78bfa; border-color: #a78bfa; box-shadow: 0 0 5px rgba(167, 139, 250, 0.3); }
+        .py { color: #2dd4bf; border-color: #2dd4bf; box-shadow: 0 0 5px rgba(45, 212, 191, 0.3); }
+        .java { color: #ef4444; border-color: #ef4444; box-shadow: 0 0 5px rgba(239, 68, 68, 0.3); }
+        .sys { color: #94a3b8; border-color: #94a3b8; box-shadow: 0 0 5px rgba(148, 163, 184, 0.3); }
+
+        pre {
+            background: #0b1220;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #00ffff;
+            color: #a5f3fc;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            overflow-x: auto;
+            margin: 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .guide-container { padding: 20px; }
+            .lang-badge { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        
+        <a href="index.html" class="back-button">← Regresar al Inicio</a>
+
+        <h1>Compendio de Lenguajes</h1>
+        <p style="text-align: center; color: #c0c0c0; margin-bottom: 30px;">
+            Guía rápida de tecnologías esenciales para el desarrollo moderno.
+        </p>
+
+        <h2>1. Desarrollo Web Frontend</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 120px;">Tecnología</th>
+                        <th>Función Principal</th>
+                        <th>Sintaxis Rápida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="lang-badge html">HTML</span>
+                            <span class="ext">.html</span>
+                        </td>
+                        <td>El esqueleto de la web. Define la estructura y el contenido semántico.</td>
+                        <td><pre>&lt;h1&gt;Hola Mundo&lt;/h1&gt;</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge css">CSS</span>
+                            <span class="ext">.css</span>
+                        </td>
+                        <td>El maquillaje de la web. Controla diseño, colores, y animaciones.</td>
+                        <td><pre>body { color: #00ffff; }</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge js">JS</span>
+                            <span class="ext">.js</span>
+                        </td>
+                        <td>El cerebro de la web. Añade interactividad y lógica dinámica.</td>
+                        <td><pre>alert("Bienvenido");</pre></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>2. Backend y Datos</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 120px;">Lenguaje</th>
+                        <th>Descripción</th>
+                        <th>Sintaxis Rápida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="lang-badge php">PHP</span>
+                            <span class="ext">.php</span>
+                        </td>
+                        <td>Líder en servidores web. Ideal para crear sitios dinámicos y CMS.</td>
+                        <td><pre>&lt;?php echo "Hola"; ?&gt;</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge py">Python</span>
+                            <span class="ext">.py</span>
+                        </td>
+                        <td>Versátil y poderoso. Usado en IA, Ciencia de Datos y Backend.</td>
+                        <td><pre>print("Hola Python")</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge java">Java</span>
+                            <span class="ext">.java</span>
+                        </td>
+                        <td>Robusto y orientado a objetos. Estándar en grandes empresas.</td>
+                        <td><pre>System.out.print("Hi");</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge js">SQL</span>
+                            <span class="ext">.sql</span>
+                        </td>
+                        <td>Lenguaje de consulta para interactuar con Bases de Datos.</td>
+                        <td><pre>SELECT * FROM usuarios;</pre></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>3. Sistemas y Móvil</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 120px;">Lenguaje</th>
+                        <th>Enfoque</th>
+                        <th>Sintaxis Rápida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="lang-badge sys">C++</span>
+                            <span class="ext">.cpp</span>
+                        </td>
+                        <td>Alto rendimiento. Motores de videojuegos y software complejo.</td>
+                        <td><pre>cout << "Hola Mundo";</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge html">Swift</span>
+                            <span class="ext">.swift</span>
+                        </td>
+                        <td>Nativo de Apple. Para crear apps de iPhone, iPad y Mac.</td>
+                        <td><pre>print("Hola iOS")</pre></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="lang-badge java">Kotlin</span>
+                            <span class="ext">.kt</span>
+                        </td>
+                        <td>El estándar moderno para desarrollo de aplicaciones Android.</td>
+                        <td><pre>println("Hola Android")</pre></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

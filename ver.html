@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Recibidos - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .data-card {
+            width: 100%;
+            max-width: 450px;
+            background-color: rgba(30, 30, 50, 0.9);
+            backdrop-filter: blur(15px); 
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border: 1px solid #00ffff; 
+            text-align: center;
+            animation: slideUp 0.8s ease-out; 
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #00ffff; 
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #c0c0c0;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .data-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+
+        .data-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 5px;
+        }
+
+        .label {
+            color: #ff007f; 
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        .value {
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 300;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: transparent;
+            color: #ff007f;
+            text-decoration: none;
+            border: 2px solid #ff007f;
+            border-radius: 30px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: #ff007f;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+            transform: translateY(-3px);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="data-card">
+        <h2>Datos Recibidos</h2>
+        <p class="subtitle">Procesado Exitosamente</p>
+
+        <div class="data-row">
+            <span class="label">Nombre</span>
+            <span class="value" id="resNombre">Cargando...</span>
+        </div>
+        
+        <div class="data-row">
+            <span class="label">Apellido Paterno</span>
+            <span class="value" id="resAP">Cargando...</span>
+        </div>
+        
+        <div class="data-row">
+            <span class="label">Apellido Materno</span>
+            <span class="value" id="resAM">Cargando...</span>
+        </div>
+        
+        <div class="data-row">
+            <span class="label">Edad</span>
+            <span class="value" id="resEdad">Cargando...</span>
+        </div>
+
+        <a href="form-alerta.html" class="btn-back">Nuevo Registro</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const nombre = localStorage.getItem('dato_nombre');
+            const ap = localStorage.getItem('dato_ap');
+            const am = localStorage.getItem('dato_am');
+            const edad = localStorage.getItem('dato_edad');
+
+            document.getElementById('resNombre').textContent = nombre ? nombre : 'No disponible';
+            document.getElementById('resAP').textContent = ap ? ap : 'No disponible';
+            document.getElementById('resAM').textContent = am ? am : 'No disponible';
+            document.getElementById('resEdad').textContent = edad ? edad + " años" : 'No disponible';
+        };
+    </script>
+
+</body>
+</html>

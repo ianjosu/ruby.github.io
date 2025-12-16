@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Responsiva - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #00ffff;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        p.instructions {
+            text-align: center;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            border: 1px solid #ff007f;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: rgba(255, 0, 127, 0.1);
+        }
+
+        .grid-demo {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(4, 1fr); 
+            transition: all 0.5s ease;
+        }
+
+        .box {
+            background: rgba(30, 30, 50, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: scale(1.02);
+            border-color: #ff007f;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0.5;
+            transform: rotate(45deg);
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 2px solid #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-demo {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .box {
+                background: rgba(255, 255, 0, 0.1); 
+                border-color: yellow;
+            }
+            .status-bar {
+                border-color: yellow;
+                color: yellow;
+            }
+            .status-bar::after { content: "Vista Tablet (2 Columnas)"; }
+        }
+
+        @media (max-width: 600px) {
+            .grid-demo {
+                grid-template-columns: 1fr;
+            }
+            .box {
+                background: rgba(0, 255, 255, 0.1); 
+                border-color: #00ffff;
+            }
+            .status-bar {
+                border-color: #00ffff;
+                color: #00ffff;
+            }
+            .status-bar::after { content: "Vista Móvil (1 Columna)"; }
+        }
+
+        @media (min-width: 1025px) {
+            .status-bar {
+                border-color: #ff007f;
+                color: #ff007f;
+            }
+            .status-bar::after { content: "Vista Escritorio (4 Columnas)"; }
+        }
+
+        .back-button {
+            margin-top: 50px;
+            display: inline-block;
+            background: transparent;
+            color: #e0e0e0;
+            border: 1px solid #e0e0e0;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .back-button:hover { background: #e0e0e0; color: #000; }
+
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button" style="position: absolute; top: 20px; left: 20px; margin: 0;">← Volver</a>
+
+    <h1>Demo de Media Queries</h1>
+    <p class="instructions">↔ Redimensiona la ventana del navegador para ver cómo se adaptan los cuadros.</p>
+
+    <div class="status-bar"></div>
+
+    <div class="grid-demo">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+    </div>
+
+</body>
+</html>

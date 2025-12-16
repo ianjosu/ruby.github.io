@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Maestra de JavaScript - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            color: #ff007f; 
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #00ffff; 
+            font-size: 1.8em;
+            margin-top: 50px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            color: #ff007f;
+            font-size: 1.3em;
+            margin-top: 30px;
+        }
+
+        p, li {
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        strong {
+            color: #00ffff;
+        }
+
+        pre {
+            background-color: #0f1a2a;
+            border: 1px solid #00ffff;
+            border-left: 5px solid #ff007f;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #f0f0f0;
+            font-family: 'Consolas', monospace;
+        }
+
+        .comment { color: #6a9955; }
+        .keyword { color: #ff007f; font-weight: bold; }
+        .string { color: #00ffff; }
+        .function { color: #ffd700; }
+
+        .interactive-area {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px dashed #ff007f;
+            border-radius: 10px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .demo-box {
+            width: 150px;
+            height: 150px;
+            background-color: #1b263b;
+            border: 2px solid #00ffff;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .btn-action {
+            background: transparent;
+            border: 2px solid #ff007f;
+            color: #ff007f;
+            padding: 10px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            background: #ff007f;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .guide-container { padding: 20px; }
+        }
+        .back-button {
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        <button class="back-button" onclick="window.location.href='index.html'">
+            Regresar al inicio
+        </button>
+
+        <h1> JavaScript: El Cerebro</h1>
+        <p class="subtitle">Interactividad, Lógica y Dinamismo Web</p>
+
+        <p>
+            Si HTML es la estructura y CSS es la apariencia, <strong>JavaScript (JS)</strong> es el cerebro y los músculos. Es un lenguaje de programación que permite crear contenido dinámico, controlar multimedia, animar imágenes y modificar tu web en tiempo real.
+        </p>
+
+        <h2>1. Variables</h2>
+        <p>Son contenedores para guardar datos. En JS moderno usamos principalmente <code>let</code> y <code>const</code>.</p>
+        
+        <pre>
+<span class="keyword">let</span> nombre = <span class="string">"Eon Flux"</span>;  <span class="comment">// Se puede cambiar después</span>
+<span class="keyword">const</span> PI = 3.1416;        <span class="comment">// No se puede cambiar (Constante)</span>
+<span class="keyword">var</span> antiguo = <span class="string">"Hola"</span>;     <span class="comment">// Manera antigua (Evitar usar)</span></pre>
+
+        <h2>2. Tipos de Datos</h2>
+        <ul>
+            <li><strong>String:</strong> Texto. <code>"Hola Mundo"</code></li>
+            <li><strong>Number:</strong> Números. <code>25</code> o <code>10.5</code></li>
+            <li><strong>Boolean:</strong> Verdadero/Falso. <code>true</code> o <code>false</code></li>
+            <li><strong>Array:</strong> Listas. <code>["HTML", "CSS", "JS"]</code></li>
+            <li><strong>Object:</strong> Colecciones de datos. <code>{ nombre: "Alex", edad: 20 }</code></li>
+        </ul>
+
+        <h2>3. Funciones</h2>
+        <p>Bloques de código diseñados para realizar una tarea particular.</p>
+        <pre>
+<span class="comment">// Función Tradicional</span>
+<span class="keyword">function</span> <span class="function">saludar</span>(nombre) {
+    <span class="keyword">return</span> <span class="string">"Hola "</span> + nombre;
+}
+
+<span class="comment">// Función Flecha (Moderna)</span>
+<span class="keyword">const</span> <span class="function">sumar</span> = (a, b) => a + b;</pre>
+
+        <h2>4. El DOM (Document Object Model)</h2>
+        <p>
+            Es la representación de tu HTML que JavaScript puede ver y modificar. Es como JS "agarra" elementos de la pantalla.
+        </p>
+        <pre>
+<span class="comment">// Seleccionar un elemento por su ID</span>
+<span class="keyword">let</span> titulo = document.<span class="function">getElementById</span>(<span class="string">"miTitulo"</span>);
+
+<span class="comment">// Cambiar el texto</span>
+titulo.innerText = <span class="string">"Nuevo Título"</span>;
+
+<span class="comment">// Cambiar el estilo</span>
+titulo.style.color = <span class="string">"#ff007f"</span>;</pre>
+
+        <h2>5. Eventos</h2>
+        <p>Cosas que suceden en el sistema (clics, teclas, scroll). JS "escucha" estos eventos para reaccionar.</p>
+        <pre>
+boton.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {
+    alert(<span class="string">"¡Hiciste clic!"</span>);
+});</pre>
+
+        <h2> Laboratorio de Pruebas</h2>
+        <p>¡Prueba el código aquí mismo! Usa los botones para modificar el elemento con JavaScript.</p>
+
+        <div class="interactive-area">
+            <div id="demoElement" class="demo-box">
+                <span id="demoText">Soy un Div</span>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button class="btn-action" onclick="cambiarColor()">Cambiar Color</button>
+                <button class="btn-action" onclick="cambiarForma()">Cambiar Forma</button>
+                <button class="btn-action" onclick="cambiarTexto()">Cambiar Texto</button>
+                <button class="btn-action" onclick="resetear()">Reset</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <p style="color: #ff007f; font-weight: bold;">Eon Flux - Guía de Estudio</p>
+        </div>
+
+    </div>
+
+    <script>
+        const caja = document.getElementById('demoElement');
+        const texto = document.getElementById('demoText');
+
+        function cambiarColor() {
+            if (caja.style.backgroundColor === 'rgb(255, 0, 127)') { 
+                caja.style.backgroundColor = '#00ffff'; 
+                caja.style.borderColor = '#ff007f';
+                texto.style.color = '#1b263b';
+            } else {
+                caja.style.backgroundColor = '#ff007f'; 
+                caja.style.borderColor = '#00ffff';
+                texto.style.color = 'white';
+            }
+        }
+
+        function cambiarForma() {
+            if (caja.style.borderRadius === '50%') {
+                caja.style.borderRadius = '10px';
+                caja.style.transform = 'rotate(0deg)';
+            } else {
+                caja.style.borderRadius = '50%';
+                caja.style.transform = 'rotate(360deg)';
+            }
+        }
+
+        function cambiarTexto() {
+            texto.innerText = "¡JS Activo!";
+        }
+
+        function resetear() {
+            caja.style.backgroundColor = '#1b263b';
+            caja.style.borderColor = '#00ffff';
+            caja.style.borderRadius = '10px';
+            caja.style.transform = 'rotate(0deg)';
+            texto.innerText = "Soy un Div";
+            texto.style.color = '#e0e0e0';
+        }
+    </script>
+
+</body>
+</html>

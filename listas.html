@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Listas HTML - Eon Flux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(30, 30, 50, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            color: #ff007f; 
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #00ffff; 
+            font-size: 1.8em;
+            margin-top: 50px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            color: #ff007f;
+            font-size: 1.3em;
+            margin-top: 30px;
+        }
+
+        p, li, dt, dd {
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        strong { color: #00ffff; }
+
+        pre {
+            background-color: #0f1a2a;
+            border: 1px solid #00ffff;
+            border-left: 5px solid #ff007f;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #f0f0f0;
+            font-family: 'Consolas', monospace;
+        }
+
+        .tag { color: #ff007f; font-weight: bold; }
+        .attr { color: #ffd700; }
+        .val { color: #00ffff; }
+        .content { color: #e0e0e0; }
+
+        .demo-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed #00ffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .demo-ul { list-style-type: disc; color: #fff; }
+        .demo-ul li::marker { color: #ff007f; font-size: 1.2em; }
+
+        .demo-ol { color: #fff; }
+        .demo-ol li::marker { color: #00ffff; font-weight: bold; }
+
+        .demo-dl dt { color: #ff007f; font-weight: bold; margin-top: 10px; }
+        .demo-dl dd { color: #e0e0e0; margin-left: 20px; border-left: 2px solid #00ffff; padding-left: 10px; }
+
+        .back-button {
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .interactive-area {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px dashed #ff007f;
+            border-radius: 10px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .btn-action {
+            background: transparent;
+            border: 2px solid #ff007f;
+            color: #ff007f;
+            padding: 10px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            background: #ff007f;
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .guide-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-container">
+        <button class="back-button" onclick="window.location.href='index.html'">
+            Regresar al inicio
+        </button>
+
+        <h1>HTML: Tipos de Listas</h1>
+        <p class="subtitle">Organización, Jerarquía y Estructura</p>
+
+        <p>
+            Las listas son esenciales para agrupar contenido relacionado. HTML nos proporciona tres tipos principales para estructurar la información: <strong>Desordenadas</strong>, <strong>Ordenadas</strong> y de <strong>Descripción</strong>.
+        </p>
+
+        <h2>1. Listas Desordenadas (&lt;ul&gt;)</h2>
+        <p>Se utilizan cuando el orden de los elementos no importa. Por defecto, usan viñetas (puntos).</p>
+        
+        <pre>
+<span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span>HTML 5<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>CSS 3<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>JavaScript<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre>
+
+        <div class="demo-box">
+            <ul class="demo-ul">
+                <li>HTML 5</li>
+                <li>CSS 3</li>
+                <li>JavaScript</li>
+            </ul>
+        </div>
+
+        <h2>2. Listas Ordenadas (&lt;ol&gt;)</h2>
+        <p>Se usan cuando la secuencia es importante (pasos, rankings). Usan números o letras.</p>
+        <p>Podemos cambiar el tipo con el atributo <code>type</code> ("1", "A", "a", "I", "i").</p>
+
+        <pre>
+<span class="tag">&lt;ol</span> <span class="attr">type</span>=<span class="val">"I"</span><span class="tag">&gt;</span> <span class="comment">&lt;!-- Números Romanos --&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Planificar<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Diseñar<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Programar<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span></pre>
+
+        <div class="demo-box">
+            <ol class="demo-ol" type="I">
+                <li>Planificar</li>
+                <li>Diseñar</li>
+                <li>Programar</li>
+            </ol>
+        </div>
+
+        <h2>3. Listas de Descripción (&lt;dl&gt;)</h2>
+        <p>Perfectas para glosarios o diccionarios. Consisten en un Término (<code>dt</code>) y una Descripción (<code>dd</code>).</p>
+
+        <pre>
+<span class="tag">&lt;dl&gt;</span>
+    <span class="tag">&lt;dt&gt;</span>Frontend<span class="tag">&lt;/dt&gt;</span>
+    <span class="tag">&lt;dd&gt;</span>Lo que el usuario ve.<span class="tag">&lt;/dd&gt;</span>
+    
+    <span class="tag">&lt;dt&gt;</span>Backend<span class="tag">&lt;/dt&gt;</span>
+    <span class="tag">&lt;dd&gt;</span>La lógica del servidor.<span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span></pre>
+
+        <div class="demo-box">
+            <dl class="demo-dl">
+                <dt>Frontend</dt>
+                <dd>La parte visual e interactiva que ve el usuario.</dd>
+                <dt>Backend</dt>
+                <dd>La lógica, bases de datos y servidor que no se ve.</dd>
+            </dl>
+        </div>
+
+        <h2>4. Listas Anidadas</h2>
+        <p>Podemos poner una lista dentro de otra para crear subniveles o menús.</p>
+
+        <pre>
+<span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Frutas
+        <span class="tag">&lt;ul&gt;</span>
+            <span class="tag">&lt;li&gt;</span>Manzana<span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+    <span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre>
+
+        <div class="demo-box">
+            <ul class="demo-ul">
+                <li>Frutas
+                    <ul style="list-style-type: circle; margin-left: 20px;">
+                        <li>Manzana</li>
+                        <li>Pera</li>
+                    </ul>
+                </li>
+                <li>Verduras
+                    <ul style="list-style-type: circle; margin-left: 20px;">
+                        <li>Zanahoria</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h2> Laboratorio de Estilos</h2>
+        <p>Cambia el estilo de la lista usando JavaScript.</p>
+
+        <div class="interactive-area">
+            <div style="text-align: left; width: fit-content; margin: 0 auto;">
+                <ol id="listaInteractiva" style="font-size: 1.2em; color: white;">
+                    <li>Elemento Uno</li>
+                    <li>Elemento Dos</li>
+                    <li>Elemento Tres</li>
+                </ol>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button class="btn-action" onclick="cambiarEstilo('decimal')">1, 2, 3</button>
+                <button class="btn-action" onclick="cambiarEstilo('upper-roman')">I, II, III</button>
+                <button class="btn-action" onclick="cambiarEstilo('lower-alpha')">a, b, c</button>
+                <button class="btn-action" onclick="convertirAUnordered()">Puntos</button>
+            </div>
+        </div>
+
+       
+    </div>
+
+    <script>
+        const lista = document.getElementById('listaInteractiva');
+
+        function cambiarEstilo(tipo) {
+            const items = lista.innerHTML;
+            const parent = lista.parentNode;
+            
+            if (lista.tagName === 'UL') {
+                const newOl = document.createElement('ol');
+                newOl.id = 'listaInteractiva';
+                newOl.style.fontSize = '1.2em';
+                newOl.style.color = 'white';
+                newOl.innerHTML = items;
+                parent.replaceChild(newOl, lista);
+                window.lista = newOl; 
+            }
+            
+            document.getElementById('listaInteractiva').style.listStyleType = tipo;
+        }
+
+        function convertirAUnordered() {
+            const items = document.getElementById('listaInteractiva').innerHTML;
+            const currentList = document.getElementById('listaInteractiva');
+            const parent = currentList.parentNode;
+
+            if (currentList.tagName === 'OL') {
+                const newUl = document.createElement('ul');
+                newUl.id = 'listaInteractiva';
+                newUl.style.fontSize = '1.2em';
+                newUl.style.color = 'white';
+                newUl.innerHTML = items;
+                parent.replaceChild(newUl, currentList);
+                newUl.style.listStyleType = 'disc';
+            }
+        }
+    </script>
+
+</body>
+</html>

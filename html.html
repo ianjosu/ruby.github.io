@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Definitiva de HTML</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1b263b 0%, #0f4c75 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .guide-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(30, 30, 50, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            color: #ff007f;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid rgba(255, 0, 127, 0.3);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #00ffff;
+            font-size: 1.8em;
+            margin-top: 40px;
+            border-left: 5px solid #ff007f;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #ff007f;
+            margin-top: 30px;
+        }
+
+        p, li {
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #c0c0c0;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li::before {
+            content: '>';
+            color: #00ffff;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        pre {
+            background-color: #0f1a2a;
+            color: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #00ffff;
+        }
+
+        code {
+            background-color: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background-color: #ff007f;
+            color: #1b263b;
+        }
+
+        td {
+            background-color: rgba(45, 60, 80, 0.5);
+        }
+
+        td:first-child {
+            color: #00ffff;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            color: #ff007f;
+        }
+
+        @media (max-width: 600px) {
+            .guide-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="guide-container">
+
+<button class="back-button" onclick="window.location.href='index.html'">
+    Regresar al inicio
+</button>
+
+<h1>Guía Definitiva de HTML</h1>
+
+<h2>¿Qué es HTML?</h2>
+<p>
+HTML (HyperText Markup Language) es el lenguaje estándar para crear la estructura de las páginas web.
+Define el contenido mediante etiquetas que el navegador interpreta.
+</p>
+
+<h2>Estructura Básica de un Documento HTML</h2>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<h2>Etiquetas Principales</h2>
+<table>
+    <tr>
+        <th>Etiqueta</th>
+        <th>Función</th>
+    </tr>
+    <tr>
+        <td>&lt;h1&gt; a &lt;h6&gt;</td>
+        <td>Títulos y encabezados</td>
+    </tr>
+    <tr>
+        <td>&lt;p&gt;</td>
+        <td>Párrafos</td>
+    </tr>
+    <tr>
+        <td>&lt;a&gt;</td>
+        <td>Enlaces</td>
+    </tr>
+    <tr>
+        <td>&lt;img&gt;</td>
+        <td>Imágenes</td>
+    </tr>
+    <tr>
+        <td>&lt;div&gt;</td>
+        <td>Contenedor genérico</td>
+    </tr>
+</table>
+
+<h2>Listas en HTML</h2>
+<h3>Lista Ordenada</h3>
+<pre>&lt;ol&gt;
+    &lt;li&gt;Elemento 1&lt;/li&gt;
+    &lt;li&gt;Elemento 2&lt;/li&gt;
+&lt;/ol&gt;</pre>
+
+<h3>Lista Desordenada</h3>
+<pre>&lt;ul&gt;
+    &lt;li&gt;Elemento A&lt;/li&gt;
+    &lt;li&gt;Elemento B&lt;/li&gt;
+&lt;/ul&gt;</pre>
+
+<h2>Tablas</h2>
+<pre>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Edad&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ana&lt;/td&gt;
+        &lt;td&gt;20&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+
+<h2>Formularios</h2>
+<pre>&lt;form action="procesar.php" method="post"&gt;
+    &lt;input type="text" name="nombre"&gt;
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</pre>
+
+<h2>HTML Semántico</h2>
+<ul>
+    <li>&lt;header&gt;</li>
+    <li>&lt;nav&gt;</li>
+    <li>&lt;section&gt;</li>
+    <li>&lt;article&gt;</li>
+    <li>&lt;footer&gt;</li>
+</ul>
+
+<h2>Buenas Prácticas</h2>
+<ul>
+    <li>Usar etiquetas semánticas</li>
+    <li>Indentación correcta</li>
+    <li>Usar atributos alt en imágenes</li>
+    <li>Separar estructura, diseño y lógica</li>
+</ul>
+
+
+</div>
+
+</body>
+</html>

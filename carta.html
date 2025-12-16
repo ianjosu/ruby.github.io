@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Casual para un Amigo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background-color: #1b263b;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .card-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.1);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 0, 127, 0.2);
+            padding-bottom: 15px;
+        }
+        
+        .header-logo .logo-placeholder {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ff007f;
+            text-decoration: none;
+            transform: skew(-10deg);
+            padding: 5px 10px;
+            background: rgba(255, 0, 127, 0.1);
+            border: 1px solid #ff007f;
+        }
+
+        .date-location {
+            text-align: right;
+            font-size: 0.9em;
+            color: #c0c0c0;
+        }
+
+        .recipient-info {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid #00ffff;
+        }
+
+        .recipient-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            color: #00ffff;
+        }
+
+        .recipient-info p {
+            margin: 0;
+            font-size: 0.95em;
+            color: #c0c0c0;
+        }
+        
+        .letter-content .greeting {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff007f;
+        }
+
+        .letter-content p {
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: left;
+            font-weight: 300;
+        }
+        
+        .letter-content .closing {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            font-style: normal;
+            font-weight: 700;
+            color: #00ffff;
+        }
+
+        .signature-block {
+            text-align: right;
+            margin-top: 50px;
+        }
+
+        .signature-block .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em; 
+            color: #ff007f;
+            margin-bottom: 5px;
+            transform: rotate(-3deg);
+            display: inline-block;
+            border-bottom: 2px dashed rgba(255, 0, 127, 0.5);
+        }
+        
+        .signature-block .signer-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-top: 20px;
+        }
+
+        .signature-block .signer-title {
+            font-size: 0.9em;
+            color: #c0c0c0;
+        }
+
+        @media (max-width: 500px) {
+            .card-container {
+                padding: 25px;
+                border-radius: 5px;
+            }
+            .header-logo {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .date-location {
+                text-align: left;
+                margin-top: 10px;
+            }
+            .recipient-info {
+                padding-left: 10px;
+            }
+        }
+        .back-button {
+            background: linear-gradient(135deg, #ff007f, #00ffff);
+            color: #1b263b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <div class="header-logo">
+            
+                <button class="back-button" onclick="window.location.href='index.html'">
+                    Regresar al inicio
+                </button>
+            
+            <div class="date-location">
+                Actopan, Hidalgo, 15 de Diciembre de 2025
+            </div>
+        </div>
+
+        <div class="recipient-info">
+            <h3>Para: Mi gran amigo Álex</h3>
+            <p>Destino: Ixmiquilpan</p>
+        </div>
+
+        <div class="letter-content">
+            <p class="greeting">¡Qué onda, Álex!</p>
+
+            <p>
+                Te escribo rápido porque la verdad necesito contarte un par de cosas que me pasaron esta semana. ¿Te acuerdas del proyecto que me traía de cabeza? Pues lo terminé, ¡y creo que quedó genial! Deberías verlo.
+            </p>
+
+            <p>
+                Además de eso, estoy organizando una pequeña reunión el próximo sábado por la noche en mi casa. Va a ser algo chill, solo para vernos y platicar un rato. Estuve pensando en hacer unas pizzas caseras, esas que te encantan.
+            </p>
+
+            <p>
+                Confírmame si puedes venir, para ir viendo las cosas. Si no puedes el sábado, dime qué día de la próxima semana estás libre y buscamos un hueco para ponernos al día. ¡Me muero de ganas de verte!
+            </p>
+
+            <p class="closing">
+                ¡Hablamos pronto!
+            </p>
+        </div>
+
+        <div class="signature-block">
+            <p>Un abrazo fuerte,</p>
+            <div class="signature">Ruby</div>
+            <p class="signer-title">La que siempre te invita un café</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
