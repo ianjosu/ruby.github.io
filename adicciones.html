@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida Saludable - Prevención</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="estrella.png" type="image/x-icon">
+
+    <style>
+        /* --- CONFIGURACIÓN EON FLUX --- */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --accent-cyan: #00ffff;
+            --accent-magenta: #ff007f;
+            --text-main: #e0e0e0;
+            --glass: rgba(30, 30, 50, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- NAV FLOTANTE --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-magenta);
+        }
+
+        /* --- HERO SECTION CON IMAGEN DE FONDO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            /* IMAGEN 13 COMO FONDO (Sin carpeta images/) */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('imagen13.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 20px var(--accent-cyan);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .btn-neon {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--accent-magenta);
+            color: var(--accent-magenta);
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease 1s forwards;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .btn-neon:hover {
+            background: var(--accent-magenta);
+            color: #fff;
+            box-shadow: 0 0 20px var(--accent-magenta);
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: var(--accent-cyan);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-magenta);
+            margin: 15px auto 0;
+        }
+
+        /* --- GRID CARDS --- */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.15);
+        }
+
+        .glass-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            filter: grayscale(30%);
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .glass-card:hover img {
+            filter: grayscale(0%);
+            border-color: var(--accent-magenta);
+        }
+
+        .glass-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .glass-card p {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        /* --- SECCIÓN IMPACTO --- */
+        .impact-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .impact-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .impact-text {
+            flex: 1;
+        }
+
+        .impact-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: var(--accent-magenta);
+            margin-bottom: 20px;
+        }
+
+        .impact-image {
+            flex: 1;
+        }
+
+        .impact-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+
+        /* --- FORMULARIO --- */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #555;
+            border-radius: 5px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent-magenta);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .nav-links { display: none; }
+            .impact-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">VidaSaludable</a>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="#factores">Factores</a>
+            <a href="#prevencion">Prevención</a>
+            <a href="#blog">Blog</a>
+            <a href="#contacto">Ayuda</a>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <h1>Tu Futuro, Tu Decisión</h1>
+        <p>
+            La prevención es la herramienta más poderosa. Informar, orientar y fortalecer habilidades sociales ayuda a construir un camino libre de adicciones.
+        </p>
+        <a href="#factores" class="btn-neon">Comenzar Ahora</a>
+    </header>
+
+    <section id="factores" class="container">
+        <h2 class="section-title">Factores de Influencia</h2>
+        <div class="grid-cards">
+            
+            <div class="glass-card">
+                <img src="imagen1.avif" alt="Causas">
+                <h3>Causas Comunes</h3>
+                <p>Estrés, baja autoestima, presión social y problemas familiares suelen ser detonantes principales.</p>
+            </div>
+
+            <div class="glass-card">
+                <img src="imagen2.avif" alt="Riesgos">
+                <h3>Riesgos Reales</h3>
+                <p>El consumo desencadena daños físicos, dependencia psicológica y conflictos en el entorno personal.</p>
+            </div>
+
+            <div class="glass-card">
+                <img src="imagen3.avif" alt="Entorno">
+                <h3>Influencia Social</h3>
+                <p>La presión de grupo y la falta de información veraz aumentan la vulnerabilidad ante las adicciones.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="container">
+            <div class="impact-content">
+                <div class="impact-text">
+                    <h2>Construyendo un Futuro Libre</h2>
+                    <p style="color: #ccc; margin-bottom: 20px;">
+                        A través de la educación, el apoyo emocional y las actividades saludables, es posible desarrollar una vida plena. La salud no es solo la ausencia de enfermedad, es el bienestar integral.
+                    </p>
+                    <p style="color: #ccc;">
+                        Las adicciones provocan aislamiento y pérdida de oportunidades. Actuar a tiempo marca la diferencia.
+                    </p>
+                </div>
+                <div class="impact-image">
+                    <img src="imagen4.avif" alt="Futuro Saludable">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prevencion" class="container">
+        <h2 class="section-title">Estrategias de Acción</h2>
+        <div class="grid-cards">
+            
+            <div class="glass-card">
+                <img src="imagen5.avif" alt="Deporte">
+                <h3>Actividades Deportivas</h3>
+                <p>La actividad física libera endorfinas y reduce el estrés de manera natural y saludable.</p>
+            </div>
+
+            <div class="glass-card">
+                <img src="imagen6.avif" alt="Psicología">
+                <h3>Apoyo Psicológico</h3>
+                <p>Contar con orientación profesional fortalece la salud mental y emocional.</p>
+            </div>
+
+            <div class="glass-card">
+                <img src="imagen7.avif" alt="Talleres">
+                <h3>Talleres Educativos</h3>
+                <p>La educación continua es clave para detectar y prevenir riesgos a tiempo.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="blog" class="container">
+        <h2 class="section-title">Blog Informativo</h2>
+        <div class="grid-cards">
+            
+            <div class="glass-card">
+                <img src="imagen8.avif" alt="Presión Social">
+                <h3>Presión Social</h3>
+                <p>Aprende técnicas asertivas para decir "NO" ante situaciones de riesgo en tu entorno.</p>
+            </div>
+
+            <div class="glass-card">
+                <img src="imagen9.avif" alt="Apoyo Familiar">
+                <h3>Apoyo Familiar</h3>
+                <p>La comunicación abierta en el hogar es el primer paso para una prevención efectiva.</p>
+            </div>
+
+            <div class="glass-card">
+                <img src="imagen10.avif" alt="Hábitos">
+                <h3>Hábitos Saludables</h3>
+                <p>Descubre rutinas diarias que promueven el bienestar físico y mental.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="impact-section" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <h2 class="section-title">Inspiración Visual</h2>
+            <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="glass-card"><img src="imagen11.avif" style="height: 150px; margin:0;" alt="Extra 1"></div>
+                <div class="glass-card"><img src="imagen12.avif" style="height: 150px; margin:0;" alt="Extra 2"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="container">
+        <h2 class="section-title">¿Necesitas Orientación?</h2>
+        <div class="form-container">
+            <form action="#">
+                <div class="input-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" placeholder="Escribe tu nombre">
+                </div>
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="input-group">
+                    <label>Mensaje</label>
+                    <textarea rows="4" placeholder="Cuéntanos cómo podemos ayudarte"></textarea>
+                </div>
+                <button class="btn-neon" style="width: 100%; cursor: pointer;">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Misión</a>
+            <a href="#">Recursos</a>
+            <a href="#">Ayuda</a>
+            <a href="#">Contacto</a>
+        </div>
+        <p style="color: #555; font-size: 0.9em;">&copy; 2025 VidaSaludable - Estilo Eon Flux</p>
+    </footer>
+
+</body>
+</html>
